@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import App from './App'
 
 import WidgetList from './components/WidgetList'
@@ -6,9 +6,11 @@ import WidgetList from './components/WidgetList'
 jest.mock('./components/WidgetList')
 
 describe('App', () => {
-  it('renders WidgetList', () => {
+  it('renders WidgetList', async () => {
     render(<App />)
 
-    expect(WidgetList).toHaveBeenCalled()
+    await waitFor(() => {
+      expect(WidgetList).toHaveBeenCalled()
+    })
   })
 })

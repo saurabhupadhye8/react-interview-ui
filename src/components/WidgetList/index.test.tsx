@@ -7,6 +7,9 @@ import WidgetList from './index'
 
 jest.mock('../WidgetDisplay')
 jest.mock('../../lib/apiConnect')
+jest.mock('react-router', () => ({
+  useNavigate: jest.fn()
+}))
 
 describe('WidgetList', () => {
   it('renders WidgetDisplay for each widget', async () => {
